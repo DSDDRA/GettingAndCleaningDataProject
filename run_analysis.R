@@ -72,45 +72,44 @@ library('dplyr')
        meanStdColumns <- grep("subject|activity|*mean*|*std*", colnames(joinedData),ignore.case =TRUE)
 #
 # Subset the data by creating table with only the columns activity,subject,std and mean
-     meanStdDataSubSet <- joinedData[,meanStdColumns]     
+       meanStdDataSubSet <- joinedData[,meanStdColumns]     
 #     
 #-------------------------------------------------------------------------------------------       
 # Part 3. Uses descriptive activity names to name the activities in the data set
 # Use the merge function to match and add the activity names with the activity codes
      
-     dt.tidyData <- merge(activityNames,meanStdDataSubSet)
+       dt.tidyData <- merge(activityNames,meanStdDataSubSet)
 # Make data tidy by removing ActivityCode column
-     dt.tidyData$activityCode <- NULL
+       dt.tidyData$activityCode <- NULL
 #
 #-------------------------------------------------------------------------------------------       
 # 4.Appropriately labels the data set with descriptive variable names. In tidy data this means
 #    remove abreviations
 #    Details for the abreviations were derived from the features_info.txt file.
-
 #
-     names(dt.tidyData) <- gsub("activityName", "ActivityName", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("^t", "Time", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("Acc", "Accelerometer", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("-mean", "Mean", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("-std", "StandardDeviation", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("Gyro", "Gyroscope", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("BodyBody", "Body", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("gravity", "Gravity", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("tBody", "TimeBody", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("fBody", "FrequencyBody", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("Mag","Magnitude", names(dt.tidyData))
-     names(dt.tidyData) <- gsub("angle","Angle", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("activityName", "ActivityName", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("^t", "Time", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("Acc", "Accelerometer", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("-mean", "Mean", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("-std", "StandardDeviation", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("Gyro", "Gyroscope", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("BodyBody", "Body", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("gravity", "Gravity", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("tBody", "TimeBody", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("fBody", "FrequencyBody", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("Mag","Magnitude", names(dt.tidyData))
+       names(dt.tidyData) <- gsub("angle","Angle", names(dt.tidyData))
 #     
 #------------------------------------------------------------------------------------------- 
 # 5.From the data set in step 4, creates a second, independent tidy data 
 #    set with the average of each variable for each activity and each subject.   
 #     
 #
-     aver.tidyData <- dt.tidyData %>% group_by(Subject,ActivityName) %>% summarize_all(funs(mean))
+       aver.tidyData <- dt.tidyData %>% group_by(Subject,ActivityName) %>% summarize_all(funs(mean))
 #     
 # Save tidy data sets into .csv files for submission to Coursera
-     write.csv(dt.tidyData, file = 'tidyData.csv', row.names = FALSE)
-     write.csv(aver.tidyData, file = 'tidyDataMeans.csv', row.names = FALSE)
+       write.csv(dt.tidyData, file = 'tidyData.csv', row.names = FALSE)
+       write.csv(aver.tidyData, file = 'tidyDataMeans.csv', row.names = FALSE)
      
- # Test data set : Read back in and view....
-    dt.test<-read.csv('tidyDataMeans.csv')     
+# Test data set : Read back in and view....
+       dt.test<-read.csv('tidyDataMeans.csv')     
