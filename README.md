@@ -9,6 +9,7 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 The files contained in this project are: 
 
 run_analysis.R: R script that was created to fulfill the objectives
+codebook.md: File that describes the variables in the run_analysis file used in the analysis if the data.  Variable descriptions and units of the original data set are in the HAR Data zipped file set that is included here.  
 
 tidyData.csv: the merged data set meeting criteria of steps 1-4 for the project.
 tidyDataMeans.csv: Result of step 5
