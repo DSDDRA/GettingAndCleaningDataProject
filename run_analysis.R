@@ -86,6 +86,7 @@ library('dplyr')
 # 4.Appropriately labels the data set with descriptive variable names. In tidy data this means
 #    remove abreviations
 #    Details for the abreviations were derived from the features_info.txt file.
+
 #
        names(dt.tidyData) <- gsub("activityName", "ActivityName", names(dt.tidyData))
        names(dt.tidyData) <- gsub("^t", "Time", names(dt.tidyData))
@@ -107,9 +108,11 @@ library('dplyr')
 #
        aver.tidyData <- dt.tidyData %>% group_by(Subject,ActivityName) %>% summarize_all(funs(mean))
 #     
-# Save tidy data sets into .csv files for submission to Coursera
+# Save tidy data sets into .csv files for testing
        write.csv(dt.tidyData, file = 'tidyData.csv', row.names = FALSE)
        write.csv(aver.tidyData, file = 'tidyDataMeans.csv', row.names = FALSE)
-     
+# Save tidy data sets into .csv files for submission to Coursera       
+       write.table(dt.tidyData, file = 'tidyData.txt', row.names = FALSE)
+       write.table(aver.tidyData, file = 'tidyDataMeans.txt', row.names = FALSE)
 # Test data set : Read back in and view....
        dt.test<-read.csv('tidyDataMeans.csv')     
