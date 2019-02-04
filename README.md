@@ -1,5 +1,5 @@
 # GettingAndCleaningDataProject
-Week Four Project          Feb 3,2019
+Week Four Project          Feb 3, 2019
 This project contains work to complete the project on tidy data using the Human Activity Recognition Using Smartphones Dataset[1]
 
 The data is from accelerometers from the Samsung Galaxy S smartphone. 
